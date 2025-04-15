@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scatter plot of Units vs Unit Cost with brushing",
+  "data": {
+    "url": "SalesOrders.csv"
+  },
+  "params": [
+    {
+      "name": "brush",
+      "select": {
+        "type": "interval"
+      }
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Units",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "Unit Cost",
+      "type": "quantitative"
+    },
+    "color": {
+      "condition": {
+        "param": "brush",
+        "field": "Item",
+        "type": "nominal"
+      },
+      "value": "lightgray"
+    },
+    "tooltip": [
+      {
+        "field": "Item",
+        "type": "nominal"
+      },
+      {
+        "field": "Units",
+        "type": "quantitative"
+      },
+      {
+        "field": "Unit Cost",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "title": "Scatter Plot: Units vs Unit Cost with Brush"
+}

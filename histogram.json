@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Histogram of Units with global mean overlay",
+  "data": {
+    "url": "SalesOrders.csv"
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "bin": true,
+          "field": "Units",
+          "type": "quantitative"
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "aggregate": "count",
+            "type": "quantitative"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "red"
+      },
+      "encoding": {
+        "x": {
+          "datum": 50.36,
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "title": "Histogram of Units with Global Mean"
+}

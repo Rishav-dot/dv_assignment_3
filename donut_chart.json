@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Donut chart of Rep vs Total",
+  "data": {
+    "url": "SalesOrders.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Total",
+          "as": "Total"
+        }
+      ],
+      "groupby": [
+        "Rep"
+      ]
+    }
+  ],
+  "mark": {
+    "type": "arc",
+    "innerRadius": 50
+  },
+  "encoding": {
+    "theta": {
+      "field": "Total",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Rep",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {
+        "field": "Rep",
+        "type": "nominal"
+      },
+      {
+        "field": "Total",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "title": "Donut Chart: Rep vs Total"
+}

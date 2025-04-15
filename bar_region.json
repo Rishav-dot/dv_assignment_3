@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart of total sales by Region",
+  "data": {
+    "url": "SalesOrders.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Region",
+      "type": "nominal"
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Total",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Region",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {
+        "field": "Region",
+        "type": "nominal"
+      },
+      {
+        "aggregate": "sum",
+        "field": "Total",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "title": "Total Sales by Region"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Streamgraph of Total over time by Item",
+  "data": {
+    "url": "SalesOrders.csv"
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "OrderDate",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "Total",
+      "type": "quantitative",
+      "stack": "center"
+    },
+    "color": {
+      "field": "Item",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {
+        "field": "Item",
+        "type": "nominal"
+      },
+      {
+        "field": "OrderDate",
+        "type": "temporal"
+      },
+      {
+        "field": "Total",
+        "type": "quantitative"
+      }
+    ]
+  },
+  "title": "Streamgraph: Total Over Time by Item"
+}

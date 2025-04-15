@@ -1,0 +1,23 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Boxplot of Unit Cost by Item",
+  "data": {
+    "url": "SalesOrders.csv"
+  },
+  "mark": "boxplot",
+  "encoding": {
+    "x": {
+      "field": "Item",
+      "type": "nominal"
+    },
+    "y": {
+      "field": "Unit Cost",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Item",
+      "type": "nominal"
+    }
+  },
+  "title": "Boxplot of Unit Cost by Item"
+}
