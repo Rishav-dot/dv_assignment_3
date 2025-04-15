@@ -3,75 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vega Assignment Visualizations</title>
+  <title>Donut Chart: Rep vs Total</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-    .chart-container {
-      margin: 30px auto;
-      max-width: 960px;
-      background: #ffffff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .chart {
-      margin-top: 20px;
-    }
-  </style>
 </head>
 <body>
-  <h1>Vega-Lite Assignment Visualizations</h1>
+  <h2>Donut Chart: Rep vs Total</h2>
+  <div id="vis"></div>
 
-  <div class="chart-container">
-    <h2>1. Donut Chart: Rep vs Total</h2>
-    <div id="donut" class="chart"></div>
-
-    <h2>2. Scatter Plot: Units vs Unit Cost (with Brush)</h2>
-    <div id="scatter" class="chart"></div>
-
-    <h2>3. Streamgraph: Total Over Time by Item</h2>
-    <div id="stream" class="chart"></div>
-
-    <h2>4. Histogram of Units with Global Mean</h2>
-    <div id="histogram" class="chart"></div>
-
-    <h2>5. Total Sales by Region</h2>
-    <div id="bar_region" class="chart"></div>
-
-    <h2>6. Boxplot of Unit Cost by Item</h2>
-    <div id="box_item" class="chart"></div>
-  </div>
-
-  <script>
-    const charts = [
-      { id: "donut", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/donut_chart.json" },
-      { id: "scatter", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/scatter_plot.json" },
-      { id: "stream", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/streamgraph.json" },
-      { id: "histogram", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/histogram.json" },
-      { id: "bar_region", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/bar_region.json" },
-      { id: "box_item", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/boxplot.json" }
-    ];
-
-    charts.forEach(chart => {
-      vegaEmbed(`#${chart.id}`, chart.url, { actions: false }).catch(console.warn);
-    });
-  </script>
-
-  <!-- Inline Donut Chart Spec for Testing -->
-  <script type="application/json" id="donut-spec">
-    {
+  <script type="text/javascript">
+    const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "description": "Donut chart of Rep vs Total",
       "data": {
@@ -116,7 +58,11 @@
         ]
       },
       "title": "Donut Chart: Rep vs Total"
-    }
+    };
+
+    vegaEmbed('#vis', spec).then(result => {
+      // Chart rendered
+    }).catch(console.error);
   </script>
 </body>
 </html>
