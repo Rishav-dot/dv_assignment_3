@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Donut chart of Rep vs Total",
   "data": {
-    "url": "SalesOrders.csv"
+    "url": "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/SalesOrders.csv"
   },
   "transform": [
     {
