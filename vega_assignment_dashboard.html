@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,16 +57,66 @@
   <script>
     const charts = [
       { id: "donut", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/donut_chart.json" },
-      { id: "scatter", url: "scatter_plot.json" },
-      { id: "stream", url: "streamgraph.json" },
-      { id: "histogram", url: "histogram.json" },
-      { id: "bar_region", url: "bar_region.json" },
-      { id: "box_item", url: "boxplot.json" }
+      { id: "scatter", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/scatter_plot.json" },
+      { id: "stream", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/streamgraph.json" },
+      { id: "histogram", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/histogram.json" },
+      { id: "bar_region", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/bar_region.json" },
+      { id: "box_item", url: "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/boxplot.json" }
     ];
 
     charts.forEach(chart => {
       vegaEmbed(`#${chart.id}`, chart.url, { actions: false }).catch(console.warn);
     });
+  </script>
+
+  <!-- Inline Donut Chart Spec for Testing -->
+  <script type="application/json" id="donut-spec">
+    {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Donut chart of Rep vs Total",
+      "data": {
+        "url": "https://raw.githubusercontent.com/Rishav-dot/dv_assignment_3/refs/heads/main/SalesOrders.csv"
+      },
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "Total",
+              "as": "Total"
+            }
+          ],
+          "groupby": [
+            "Rep"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50
+      },
+      "encoding": {
+        "theta": {
+          "field": "Total",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Rep",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "Rep",
+            "type": "nominal"
+          },
+          {
+            "field": "Total",
+            "type": "quantitative"
+          }
+        ]
+      },
+      "title": "Donut Chart: Rep vs Total"
+    }
   </script>
 </body>
 </html>
